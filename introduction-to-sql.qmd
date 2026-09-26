@@ -12,18 +12,17 @@ format:
     embed-resources: true
 ---
 
-**Course:** IBM 6500 — MSDM Culminating Experience Project
-**Assignment:** SQL1 – Introduction to SQL (DataCamp)
+**Course:** IBM 6500 — MSDM Culminating Experience Project **Assignment:** SQL1 – Introduction to SQL (DataCamp)
 
 ## Course-Completion Evidence
 
-![Introduction to SQL course completion certificate](images/introduction-to-sql-certificate.png)
+![Introduction to SQL course completion certificate](images/paste-2.png)
 
-<!-- TODO: 1-2 sentences — when you completed the course, e.g. "I completed the Introduction to SQL course on DataCamp on [date]." -->
+I completed the Introduction to SQL course on DataCamp on September 26, 2026
 
 ## Learning Notes and Key Takeaways
 
-::: {.callout-note}
+::: callout-note
 The chapter titles below follow DataCamp's standard Introduction to SQL curriculum. Double check these against the exact chapter names shown in your own course dashboard and rename any that differ before submitting.
 :::
 
@@ -33,7 +32,7 @@ The chapter titles below follow DataCamp's standard Introduction to SQL curricul
 
 **Important SQL syntax:** `SELECT`, `FROM`, `DISTINCT`, `COUNT()`, aliasing with `AS`, basic arithmetic in a `SELECT` statement.
 
-```sql
+``` sql
 SELECT DISTINCT category, COUNT(*) AS product_count
 FROM products
 GROUP BY category;
@@ -49,14 +48,14 @@ GROUP BY category;
 
 **Important SQL syntax:** `WHERE`, comparison operators (`=`, `<>`, `<`, `>`, `<=`, `>=`), `AND` / `OR` / `NOT`, `BETWEEN`, `IN`, `LIKE` / `NOT LIKE` with wildcards (`%` and `_`), `IS NULL` / `IS NOT NULL`.
 
-```sql
+``` sql
 SELECT order_id, order_date, total_amount
 FROM orders
 WHERE total_amount > 50
   AND order_date BETWEEN '2026-01-01' AND '2026-03-31';
 ```
 
-**Explanation of the example:** This query pulls only the orders placed in the first quarter of 2026 with a total amount greater than $50, filtering out smaller or older orders.
+**Explanation of the example:** This query pulls only the orders placed in the first quarter of 2026 with a total amount greater than \$50, filtering out smaller or older orders.
 
 **CEP application:** This is directly useful for AO2 — filtering Clover or online store order data down to a specific date range or order size would help me isolate the transactions relevant to evaluating storefront performance during a particular period.
 
@@ -66,7 +65,7 @@ WHERE total_amount > 50
 
 **Important SQL syntax:** `AVG()`, `SUM()`, `MIN()`, `MAX()`, `COUNT()`, `ROUND()`, combining aggregate functions with arithmetic, aliasing aggregate results with `AS`.
 
-```sql
+``` sql
 SELECT ROUND(AVG(total_amount), 2) AS avg_order_value,
        SUM(total_amount) AS total_revenue
 FROM orders
@@ -83,7 +82,7 @@ WHERE channel = 'online';
 
 **Important SQL syntax:** `ORDER BY` (`ASC` / `DESC`, sorting by multiple columns), `GROUP BY`, `HAVING` (filtering on an aggregated value, as opposed to `WHERE`, which filters individual rows before aggregation).
 
-```sql
+``` sql
 SELECT category, SUM(total_amount) AS category_revenue
 FROM orders
 GROUP BY category
@@ -91,17 +90,19 @@ HAVING SUM(total_amount) > 500
 ORDER BY category_revenue DESC;
 ```
 
-**Explanation of the example:** This query totals revenue by product category, keeps only the categories that generated more than $500, and sorts the results from highest to lowest revenue.
+**Explanation of the example:** This query totals revenue by product category, keeps only the categories that generated more than \$500, and sorts the results from highest to lowest revenue.
 
 **CEP application:** This is essentially the SQL version of the summary table I built for the M04 gt/gtExtras assignment — once I have real Clover data, a query like this would let me identify which product categories or sales channels are actually driving online revenue, directly supporting the "underperforming category" analysis I described for AO2.
 
 ## Overall Reflection and Future Reference
 
-<!-- TODO: address each of the following —
-- What were the most useful skills you learned?
-- Which SQL concepts were most challenging?
-- How could SQL support digital marketing analytics, customer insights, survey research, or your CEP?
-- What concepts or commands do you expect to review again in the future? -->
+This course was a great basic introduction to the SQL language, and just as valuable was the conceptual groundwork it laid before getting into syntax. One of the most useful things I took away was finally understanding the distinction between SQL as a language, a SQL database, and a SQL server — terms I had heard used almost interchangeably before this course. Learning that SQL itself is a standard language for querying data, while a database is where that data actually lives, and a server is the system that hosts and manages the database, helped clarify a lot of confusion I had going in. I also found it useful to learn that different database systems (PostgreSQL, MySQL, SQL Server, BigQuery, etc.) each implement their own "flavor" of SQL, with slightly different syntax conventions and functions, even though the core language and logic stay largely the same across all of them.
+
+The most challenging part for me was less about any single command and more about shifting how I think about data. Coming from a background of looking at data in spreadsheets, it took some adjustment to think in terms of filtering, aggregating, and grouping rows through a query rather than visually scanning or sorting a sheet. `GROUP BY` combined with `HAVING` was probably the trickiest concept, since it requires thinking about which operations happen before versus after the data gets aggregated.
+
+SQL has clear applications for digital marketing analytics and my CEP work. Rather than requesting a fully pre-built export or dashboard, I can write targeted queries to pull exactly the data I need — filtered to a specific date range, grouped by product category or channel, and summarized into the exact metrics relevant to a given analysis. For my AO2 specifically, this means I could eventually query Clover or online store transaction data directly to calculate conversion-related metrics, rather than relying entirely on whatever pre-aggregated reports a platform's dashboard happens to offer.
+
+Looking ahead, I expect to revisit `GROUP BY` and `HAVING` the most, since summarizing data by category is central to how I plan to analyze the Farm Store's sales and inventory data. I also expect to come back to the different SQL "flavors" question once I know which specific database or platform (Clover's backend, BigQuery, or something else) the CEP project will ultimately use, since I'll need to confirm which syntax conventions actually apply.
 
 ## Appendix: Publication Links
 

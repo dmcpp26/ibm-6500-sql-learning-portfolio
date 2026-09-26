@@ -7,7 +7,7 @@ format:
     embed-resources: true
 ---
 
-# IBM 6500 SQL Learning Portfolio
+# SQL Learning Portfolio - DMEZA
 
 **Student:** Danielle Meza  
 **Course:** IBM 6500
