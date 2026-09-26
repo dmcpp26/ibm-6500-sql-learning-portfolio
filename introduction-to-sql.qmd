@@ -1,0 +1,109 @@
+---
+title: "Introduction to SQL: Course Completion and Learning Notes"
+author: "Danielle Meza"
+date: today
+format:
+  html:
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true
+    embed-resources: true
+---
+
+**Course:** IBM 6500 — MSDM Culminating Experience Project
+**Assignment:** SQL1 – Introduction to SQL (DataCamp)
+
+## Course-Completion Evidence
+
+![Introduction to SQL course completion certificate](images/introduction-to-sql-certificate.png)
+
+<!-- TODO: 1-2 sentences — when you completed the course, e.g. "I completed the Introduction to SQL course on DataCamp on [date]." -->
+
+## Learning Notes and Key Takeaways
+
+::: {.callout-note}
+The chapter titles below follow DataCamp's standard Introduction to SQL curriculum. Double check these against the exact chapter names shown in your own course dashboard and rename any that differ before submitting.
+:::
+
+### Chapter 1: Selecting Columns
+
+**Main ideas:** This chapter introduces the basic structure of a SQL query — selecting specific columns from a table, removing duplicate results, and counting rows. A query always follows the same basic order: what you want to see (`SELECT`), and where it comes from (`FROM`).
+
+**Important SQL syntax:** `SELECT`, `FROM`, `DISTINCT`, `COUNT()`, aliasing with `AS`, basic arithmetic in a `SELECT` statement.
+
+```sql
+SELECT DISTINCT category, COUNT(*) AS product_count
+FROM products
+GROUP BY category;
+```
+
+**Explanation of the example:** This query looks at the `products` table, groups the rows by `category`, and counts how many products fall into each category, labeling that count column `product_count` instead of the default `count`.
+
+**CEP application:** For my AO2, once I have access to online store product data, a query like this would let me quickly see how many products exist in each category on the Farm Store's online catalog — a first step before comparing category-level sales performance.
+
+### Chapter 2: Filtering Rows
+
+**Main ideas:** This chapter covers narrowing down query results to only the rows that meet certain conditions, using comparison operators, logical operators to combine conditions, and pattern matching for text.
+
+**Important SQL syntax:** `WHERE`, comparison operators (`=`, `<>`, `<`, `>`, `<=`, `>=`), `AND` / `OR` / `NOT`, `BETWEEN`, `IN`, `LIKE` / `NOT LIKE` with wildcards (`%` and `_`), `IS NULL` / `IS NOT NULL`.
+
+```sql
+SELECT order_id, order_date, total_amount
+FROM orders
+WHERE total_amount > 50
+  AND order_date BETWEEN '2026-01-01' AND '2026-03-31';
+```
+
+**Explanation of the example:** This query pulls only the orders placed in the first quarter of 2026 with a total amount greater than $50, filtering out smaller or older orders.
+
+**CEP application:** This is directly useful for AO2 — filtering Clover or online store order data down to a specific date range or order size would help me isolate the transactions relevant to evaluating storefront performance during a particular period.
+
+### Chapter 3: Aggregate Functions
+
+**Main ideas:** This chapter covers summarizing data across many rows into single summary values, such as totals and averages, and rounding those results to a readable precision.
+
+**Important SQL syntax:** `AVG()`, `SUM()`, `MIN()`, `MAX()`, `COUNT()`, `ROUND()`, combining aggregate functions with arithmetic, aliasing aggregate results with `AS`.
+
+```sql
+SELECT ROUND(AVG(total_amount), 2) AS avg_order_value,
+       SUM(total_amount) AS total_revenue
+FROM orders
+WHERE channel = 'online';
+```
+
+**Explanation of the example:** This query calculates the average order value (rounded to two decimal places) and the total revenue generated specifically from orders placed through the online channel.
+
+**CEP application:** This maps almost exactly onto the measures in my AO2 — average order value and total online revenue are two of the specific metrics I plan to use to evaluate the Clover-to-online-store integration's performance.
+
+### Chapter 4: Sorting and Grouping
+
+**Main ideas:** This chapter covers controlling the order in which results are displayed and combining aggregate functions with grouping to summarize data by category, then filtering those grouped results.
+
+**Important SQL syntax:** `ORDER BY` (`ASC` / `DESC`, sorting by multiple columns), `GROUP BY`, `HAVING` (filtering on an aggregated value, as opposed to `WHERE`, which filters individual rows before aggregation).
+
+```sql
+SELECT category, SUM(total_amount) AS category_revenue
+FROM orders
+GROUP BY category
+HAVING SUM(total_amount) > 500
+ORDER BY category_revenue DESC;
+```
+
+**Explanation of the example:** This query totals revenue by product category, keeps only the categories that generated more than $500, and sorts the results from highest to lowest revenue.
+
+**CEP application:** This is essentially the SQL version of the summary table I built for the M04 gt/gtExtras assignment — once I have real Clover data, a query like this would let me identify which product categories or sales channels are actually driving online revenue, directly supporting the "underperforming category" analysis I described for AO2.
+
+## Overall Reflection and Future Reference
+
+<!-- TODO: address each of the following —
+- What were the most useful skills you learned?
+- Which SQL concepts were most challenging?
+- How could SQL support digital marketing analytics, customer insights, survey research, or your CEP?
+- What concepts or commands do you expect to review again in the future? -->
+
+## Appendix: Publication Links
+
+- [GitHub Repository](https://github.com/dmcpp26/ibm-6500-sql-learning-portfolio)
+- [Published Introduction to SQL Report](https://dmcpp26.github.io/ibm-6500-sql-learning-portfolio/introduction-to-sql.html)
