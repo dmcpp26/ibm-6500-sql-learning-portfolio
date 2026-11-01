@@ -9,7 +9,7 @@ format:
 
 # SQL Learning Portfolio - DMEZA
 
-**Student:** Danielle Meza  
+**Student:** Danielle Meza\
 **Course:** IBM 6500
 
 This portfolio contains my DataCamp course-completion evidence and learning notes for SQL and BigQuery.
@@ -18,4 +18,4 @@ This portfolio contains my DataCamp course-completion evidence and learning note
 
 - [Introduction to SQL](introduction-to-sql.html)
 - [Introduction to BigQuery](introduction-to-bigquery.html)
-- Intermediate SQL (intermediate-sql.html)
+- [Intermediate SQL](intermediate-sql.html)
